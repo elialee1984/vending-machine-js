@@ -18,90 +18,101 @@ dont worry about node_modules too much yet, but the important thing to know is t
 "what is .gitignore?"
 a file. you can put file names or folder names in this file. all files/folders that are listed in the file will be ignored when you push to your github repo
 i added a .gitignore file into this pull request so you can see what it looks like
+
+"what does .gitignore do?"
+look at the .gitignore i added into your repo. it tells git to ignore the node_modules folder
+this means that you can have node_modules in your local repo. when you push to your github repo, node_modules will NOT be added
 */
 
 // make sure you use const or let to initialize these variables! all variables should be initialized using const or let
 // i only didnt do it in the gist because i was showing you what the data should look like hehe
 moneyThatUserHas = 100;
 vendingMachine = [
-    { snack: 'Snickers', quantity: 10, price: 1.50 },
-    { snack: 'M&Ms', quantity: 5, price: 1 },
-    { snack: 'Sour patch', quantity: 15, price: 3 },
+  { snack: "Snickers", quantity: 10, price: 1.5 },
+  { snack: "M&Ms", quantity: 5, price: 1 },
+  { snack: "Sour patch", quantity: 15, price: 3 },
 ];
 
 const addSnackToVendingMachine = (snack, quantity, price) => {
-    vendingMachine.push({ snack, quantity, price });
+  vendingMachine.push({ snack, quantity, price });
 };
 
-/nice!
-const buySnack = snack => {
-    for (let i = 0; i < vendingMachine.length; i++) {
-        const snackSelected = vendingMachine[i];
+// nice!
+const buySnack = (snack) => {
+  for (let i = 0; i < vendingMachine.length; i++) {
+    const snackSelected = vendingMachine[i];
 
-        if (snackSelected.snack === snack) {
-            snackSelected.quantity--;
-            moneyThatUserHas -= snackSelected.price;
-        }
+    if (snackSelected.snack === snack) {
+      snackSelected.quantity--;
+      moneyThatUserHas -= snackSelected.price;
     }
-    return moneyThatUserHas;
-}
+  }
+  return moneyThatUserHas;
+};
 
 // nice!
 function displayVendingMachine() {
-    vendingMachine.forEach((snackItem, index) => {
-        console.log(`${index + 1}. ${snackItem.quantity} ${snackItem.snack}: $${snackItem.price} each`)
-    })
+  vendingMachine.forEach((snackItem, index) => {
+    console.log(
+      `${index + 1}. ${snackItem.quantity} ${snackItem.snack}: $${
+        snackItem.price
+      } each`
+    );
+  });
 
-    // alternatively:
-    // for (let i = 0; i < vendingMachine.length; i++) {
-    //     console.log(`${i + 1}. ${vendingMachine[i].quantity} ${vendingMachine[i].snack}: $${vendingMachine[i].price} each`)
-    // }
+  // alternatively:
+  // for (let i = 0; i < vendingMachine.length; i++) {
+  //     console.log(`${i + 1}. ${vendingMachine[i].quantity} ${vendingMachine[i].snack}: $${vendingMachine[i].price} each`)
+  // }
 }
 
 // nice! try to do this with ONLY the reduce method and no for loop :D
 function getTotalPriceOfAllVendingMachineItems() {
-    const totalPrice = [];
-    for (let i = 0; i < vendingMachine.length; i++) {
-        const snackSelected = vendingMachine[i];
+  const totalPrice = [];
+  for (let i = 0; i < vendingMachine.length; i++) {
+    const snackSelected = vendingMachine[i];
 
-        totalPrice.push(snackSelected.quantity * snackSelected.price);
-    }
+    totalPrice.push(snackSelected.quantity * snackSelected.price);
+  }
 
-    return totalPrice.reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+  return totalPrice.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
 }
 
 // beautiful! try to use an array method to achieve this hehe
 function getNamesOfAllSnackItems() {
-    const allSnackNames = [];
+  const allSnackNames = [];
 
-    for (const item of vendingMachine) {
-        allSnackNames.push(item.snack)
-    }
-    return allSnackNames;
+  for (const item of vendingMachine) {
+    allSnackNames.push(item.snack);
+  }
+  return allSnackNames;
 }
 
 // A+
 function getAllSnacksUnderTwoDollars() {
-    return vendingMachine.filter((snackItem) => snackItem.price < 2);
+  return vendingMachine.filter((snackItem) => snackItem.price < 2);
 }
 
 // A+A+A+A+
 // i didnt teach this yet but there's an `array.includes()` method
 // try looking up the docs and figuring out how to use it here
-const hasSnack = snack => {
-    for (const snackItem of vendingMachine) {
-        if (snackItem.snack === snack) return true;
-    }
-    return false;
-}
+const hasSnack = (snack) => {
+  for (const snackItem of vendingMachine) {
+    if (snackItem.snack === snack) return true;
+  }
+  return false;
+};
 
 module.exports = {
-    moneyThatUserHas,
-    addSnackToVendingMachine,
-    getTotalPriceOfAllVendingMachineItems,
-    buySnack,
-    displayVendingMachine,
-    getNamesOfAllSnackItems,
-    getAllSnacksUnderTwoDollars,
-    hasSnack,
-  }
+  moneyThatUserHas,
+  addSnackToVendingMachine,
+  getTotalPriceOfAllVendingMachineItems,
+  buySnack,
+  displayVendingMachine,
+  getNamesOfAllSnackItems,
+  getAllSnacksUnderTwoDollars,
+  hasSnack,
+};
