@@ -97,7 +97,7 @@ function getAllSnacksUnderTwoDollars() {
 }
 
 // A+A+A+A+
-// i didnt teach this yet but there's an `array.includes()` method
+// i didnt teach this yet but there's an `array.some()` method
 // try looking up the docs and figuring out how to use it here
 const hasSnack = (snack) => {
   for (const snackItem of vendingMachine) {
