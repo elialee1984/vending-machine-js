@@ -17,7 +17,7 @@ dont worry about node_modules too much yet, but the important thing to know is t
 
 "what is .gitignore?"
 a file. you can put file names or folder names in this file. all files/folders that are listed in the file will be ignored when you push to your github repo
-i added a .gitignore file into this pull request so you can see what it looks like
+i added a .gitignore file into this branch so you can see what it looks like
 
 "what does .gitignore do?"
 look at the .gitignore i added into your repo. it tells git to ignore the node_modules folder
